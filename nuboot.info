@@ -1,0 +1,41 @@
+name        = {{Name}}
+description = A theme based on NuBoot Radix.
+screenshot  = screenshot.png
+core        = 7.x
+base theme  = nuboot_radix
+hidden = true
+
+; Regions
+regions[header]         = 'Header'
+regions[highlighted]    = 'Highlighted'
+regions[preface_first]  = 'Preface First'
+regions[preface_second] = 'Preface Second'
+regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[postscript_first]   = 'Postscript First'
+regions[postscript_second]  = 'Postscript Second'
+regions[bottom_content] = Bottom Content
+regions[footer_first]   = Footer First
+regions[footer_second]  = Footer Second
+regions[footer_third]   = Footer Third
+regions[footer]         = 'Footer'
+regions[page_top]       = 'Page top'
+regions[page_bottom]    = 'Page bottom'
+
+; Panels
+; plugins[panels][layouts] = panels/layouts
+; plugins[panels][styles] = panels/styles
+
+; CSS - General
+stylesheets[all][]     = stylesheets/custom-screen.css
+stylesheets[print][]   = stylesheets/custom-print.css
+
+; CSS - Conditional
+; stylesheets-conditional[lte IE 9][all][] = stylesheets/custom-ie.css
+
+; Javascript
+; scripts[] = js/script.js
+
+
