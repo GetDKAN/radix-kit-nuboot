@@ -11,13 +11,11 @@ function {{machine_name}}_form_system_theme_settings_alter(&$form, &$form_state)
   // Ensure this include file is loaded when the form is rebuilt from the cache.
   $form_state['build_info']['files']['form'] = drupal_get_path('theme', '{{machine_name}}') . '/theme-settings.php';
   unset($form['nuboot_radix_theme_settings']);
-
   // Add theme settings here.
   $form['{{machine_name}}_theme_settings'] = array(
     '#title' => t('Theme Settings'),
     '#type' => 'fieldset',
   );
-
   // Copyright.
   $copyright = theme_get_setting('copyright');
   $form['{{machine_name}}_theme_settings']['copyright'] = array(
@@ -26,7 +24,6 @@ function {{machine_name}}_form_system_theme_settings_alter(&$form, &$form_state)
     '#format' => 'html',
     '#default_value' => isset($copyright['value']) ? $copyright['value'] : t('Powered by <a href="http://nucivic.com/dkan">DKAN</a>, a project of <a href="http://nucivic.com">NüCivic</a>'),
   );
-
   // Hero fieldset.
   $form['hero'] = array(
     '#type' => 'fieldset',
@@ -48,7 +45,6 @@ function {{machine_name}}_form_system_theme_settings_alter(&$form, &$form_state)
       'file_validate_extensions' => array('gif png jpg jpeg'),
     ),
   );
-
   // Solid color background.
   $form['hero']['background_option'] = array(
     '#type' => 'textfield',
@@ -58,11 +54,9 @@ function {{machine_name}}_form_system_theme_settings_alter(&$form, &$form_state)
     '#default_value' => theme_get_setting('background_option'),
     '#element_validate' => array('_{{machine_name}}_background_option_setting'),
   );
-
   // Return the additional form widgets.
   return $form;
 }
-
 /**
  * Helper function to validate background color field
  */

@@ -1,7 +1,0 @@
-/* Overrides to Nuboot Radix
-You must declare at least one stylesheet in your sub-theme 
-for any of the parent theme's stylesheets to be inherited.
-
-Create as many partials as you need and import them here.
-*/
-body { background: #fff; }

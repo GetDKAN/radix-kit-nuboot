@@ -1,7 +1,9 @@
 name        = {{Name}}
-description = A theme based on NuBoot Radix.
+description = A subtheme based on NuBoot Radix
 screenshot  = screenshot.png
 core        = 7.x
+
+; Base - Radix
 base theme  = nuboot_radix
 hidden = true
 
@@ -25,17 +27,13 @@ regions[page_top]       = 'Page top'
 regions[page_bottom]    = 'Page bottom'
 
 ; Panels
-; plugins[panels][layouts] = panels/layouts
-; plugins[panels][styles] = panels/styles
+plugins[panels][layouts] = panels/layouts
+plugins[panels][styles] = panels/styles
 
 ; CSS - General
-stylesheets[all][]     = stylesheets/custom-screen.css
-stylesheets[print][]   = stylesheets/custom-print.css
-
-; CSS - Conditional
-; stylesheets-conditional[lte IE 9][all][] = stylesheets/custom-ie.css
+stylesheets[all][]     = assets/css/{{machine_name}}.style.css
 
 ; Javascript
-; scripts[] = js/script.js
+scripts[] = assets/js/{{machine_name}}.script.js
 
 
