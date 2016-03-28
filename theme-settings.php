@@ -54,6 +54,22 @@ function {{machine_name}}_form_system_theme_settings_alter(&$form, &$form_state)
     '#default_value' => theme_get_setting('background_option'),
     '#element_validate' => array('_{{machine_name}}_background_option_setting'),
   );
+
+  // Add svg logo option.
+  $form['logo']['settings']['svg_logo'] = array(
+    '#type' => 'managed_file',
+    '#title' => t('Upload an .svg version of your logo'),
+    '#description' => t('<p>Be sure to also add a .png version of your logo with the <em>Upload logo image</em> field above for older browsers that do not support .svg files. Both files should have the same name, only the suffix should change (i.e. logo.png & logo.svg).</p>'),
+    '#required' => FALSE,
+    '#upload_location' => file_default_scheme() . '://',
+    '#default_value' => theme_get_setting('svg_logo', 'nuboot_radix'),
+    '#upload_validators' => array(
+      'file_validate_extensions' => array('svg'),
+    ),
+  );
+  
+  $form['#submit'][] = '{{machine_name}}_hero_system_theme_settings_form_submit';
+
   // Return the additional form widgets.
   return $form;
 }
@@ -79,4 +95,38 @@ function _{{machine_name}}_background_option_setting($element, &$form, &$form_st
       form_error($element, t('Must be a valid hexadecimal CSS color value.'));
     }
   }
+}
+
+/**
+ * Submit function for theme settings form.
+ */
+function {{machine_name}}_hero_system_theme_settings_form_submit(&$form, &$form_state) {
+  if ($form_state['values']['hero_file']) {
+    $fid = $form_state['values']['hero_file'];
+    _nuboot_radix_file_set_permanent($fid);
+  }
+  if ($form_state['values']['svg_logo']) {
+    $fid = $form_state['values']['svg_logo'];
+    _nuboot_radix_file_set_permanent($fid);
+  }
+}
+
+/**
+ *  Sets file to FILE_STATUS_PERMANENT so it won't be erased by cron.
+ */
+function _{{machine_name}}_file_set_permanent($fid) {
+  $file = file_load($fid);
+  $file->status = FILE_STATUS_PERMANENT;
+  file_save($file);
+  file_usage_add($file, 'theme', 'file', $fid);
+  {{machine_name}}_file_insert($file);
+}
+
+/**
+* Implements hook_file_insert().
+*/
+function {{machine_name}}_file_insert($file) {
+  $file->filename = str_replace(' ', '-', $file->filename);
+  $hash = 'public://' . $file->filename;
+  file_move($file, $hash, 'FILE_EXIST_REPLACE');
 }
