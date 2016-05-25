@@ -24,6 +24,14 @@ function {{machine_name}}_form_system_theme_settings_alter(&$form, &$form_state)
     '#format' => 'html',
     '#default_value' => isset($copyright['value']) ? $copyright['value'] : t('Powered by <a href="http://nucivic.com/dkan">DKAN</a>, a project of <a href="http://nucivic.com">NuCivic</a>'),
   );
+  // Log In Display.
+  $display_login_menu = (theme_get_setting('display_login_menu', '{{machine_name}}') === NULL) ? 1 : theme_get_setting('display_login_menu', '{{machine_name}}');
+
+  $form['theme_settings']['display_login_menu'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Display login menu'),
+    '#default_value' => $display_login_menu,
+  );
   // Hero fieldset.
   $form['hero'] = array(
     '#type' => 'fieldset',
