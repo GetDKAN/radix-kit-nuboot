@@ -27,7 +27,7 @@ function {{machine_name}}_preprocess_page(&$variables) {
 function {{machine_name}}_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     case 'colorizer_admin_settings':
-      $form['colorizer_global']['colorizer_cssfile']['#default_value'] = 'colorizer/colorizer.css';
+      $form['colorizer_global']['colorizer_cssfile']['#default_value'] = '../../../../profiles/dkan/themes/nuboot_radix/colorizer/colorizer.css';
       $form['colorizer_global']['colorizer_incfile']['#default_value'] = 'colorizer/colorizer.inc';
       break;
   }
