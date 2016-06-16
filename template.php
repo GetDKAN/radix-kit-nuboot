@@ -15,9 +15,8 @@ foreach (glob($includes_path) as $filename) {
  */
 function {{machine_name}}_preprocess_page(&$variables) {
   // Add copyright to theme.
-  if ($copyright = theme_get_setting('copyright')) {
-    $variables['copyright'] = check_markup($copyright['value'], $copyright['format']);
-  }
+  $copyright = (theme_get_setting('copyright') === NULL) ? '' : theme_get_setting('copyright');
+  $variables['copyright'] = check_markup($copyright['value']);
   $variables['display_login_menu'] = (theme_get_setting('display_login_menu') === NULL) ? 1 : theme_get_setting('display_login_menu');
 }
 
