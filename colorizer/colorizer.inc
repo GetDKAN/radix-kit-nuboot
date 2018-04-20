@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Colorizer options.
@@ -38,7 +39,7 @@ $info = array(
         'sidebarborders' => '#0A77BD',
         'footer' => '#ffffff',
         'titleslogan' => '#3B3B3B',
-        'herotitle' => '#3B3B3B',
+        'herotitle' => '#FFFFFF',
         'title' => '#3B3B3B',
         'text' => '#3B3B3B',
         'link' => '#0A77BD',
