@@ -27,7 +27,7 @@ foreach (glob($includes_path) as $filename) {
 function {{machine_name}}_preprocess_page(&$variables) {
   // Add copyright to theme.
   if ($copyright = theme_get_setting('copyright')) {
-    $variables['copyright'] = isset($copyright['value']) ? check_markup($copyright['value'], $copyright['format']) : t('Powered by <a href="http://nucivic.com/dkan">DKAN</a>, a project of <a href="http://nucivic.com">NuCivic</a>');
+    $variables['copyright'] = isset($copyright['value']) ? check_markup($copyright['value'], $copyright['format']) : t('Powered by https://getdkan.org/">DKAN</a>');
   }
   $variables['display_login_menu'] = (theme_get_setting('display_login_menu') === NULL) ? 1 : theme_get_setting('display_login_menu');
 }
